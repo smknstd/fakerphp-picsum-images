@@ -32,10 +32,10 @@ $faker->imageUrl($width = 800, $height = 600);
 $filePath= $faker->image($dir = '/tmp', $width = 640, $height = 480);
 ```
 
-There are options like:
+Also, there are some more options :
 - alternative webp format
 - effects (grayscale, blurry)
-- returning a specific photo based on an id (ex: https://picsum.photos/id/1/800/600)
+- returning a specific photo based on an id instead of a random one (ex: https://picsum.photos/id/1/800/600)
 
 ## Testing
 
