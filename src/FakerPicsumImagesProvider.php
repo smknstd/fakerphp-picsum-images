@@ -20,7 +20,7 @@ class FakerPicsumImagesProvider extends BaseProvider
     public static function imageUrl(
         int $width = 640,
         int $height = 480,
-        string $id = null,
+        int $id = null,
         bool $randomize = true,
         bool $gray = false,
         int $blur = null,
@@ -47,8 +47,8 @@ class FakerPicsumImagesProvider extends BaseProvider
         string $dir = null,
         int $width = 640,
         int $height = 480,
-        bool $fullPath = true,
-        string $id = null,
+        bool $isFullPath = true,
+        int $id = null,
         bool $randomize = true,
         bool $gray = false,
         int $blur = null,
@@ -56,7 +56,7 @@ class FakerPicsumImagesProvider extends BaseProvider
     ): bool|\RuntimeException|string {
         $url = static::imageUrl($width, $height, $id, $randomize, $gray, $blur, $imageExtension);
 
-        return self::fetchImage($url, $dir, $fullPath, $imageExtension ?? self::JPG_IMAGE);
+        return self::fetchImage($url, $dir, $isFullPath, $imageExtension ?? self::JPG_IMAGE);
     }
 
     private static function fetchImage(
@@ -74,7 +74,7 @@ class FakerPicsumImagesProvider extends BaseProvider
         // Generate a random filename. Use the server address so that a file
         // generated at the same time on a different server won't have a collision.
         $name = md5(uniqid(empty($_SERVER['SERVER_ADDR']) ? '' : $_SERVER['SERVER_ADDR'], true));
-        $filename = $name . $imageExtension;
+        $filename = $name . "." . $imageExtension;
         $filepath = $dir . DIRECTORY_SEPARATOR . $filename;
 
         // save file
