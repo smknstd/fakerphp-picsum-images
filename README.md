@@ -33,7 +33,7 @@ $filePath= $faker->image($dir = '/tmp', $width = 640, $height = 480);
 ```
 
 There are options like:
-- file format (jpg or webp)
+- alternative webp format
 - effects (grayscale, blurry)
 - returning a specific photo based on an id (ex: https://picsum.photos/id/1/800/600)
 
