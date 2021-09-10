@@ -7,7 +7,7 @@
 
 ## Introduction
 
-Alternative image provider for [fakerphp](https://github.com/fakerphp/faker) using [picsum.photos](picsum.photos)
+Alternative image provider for [fakerphp](https://github.com/fakerphp/faker) using [picsum.photos](https://picsum.photos)
 
 _This package has been forked from [mmo/faker-images](https://github.com/morawskim/faker-images) for [fzaninotto/faker](https://github.com/fzaninotto/Faker) (deprecated [~ Oct 2020](https://marmelab.com/blog/2020/10/21/sunsetting-faker.html))._
  
