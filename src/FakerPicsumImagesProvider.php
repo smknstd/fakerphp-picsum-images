@@ -7,12 +7,12 @@ use InvalidArgumentException;
 
 class FakerPicsumImagesProvider extends BaseProvider
 {
-    const JPG_IMAGE = 'jpg';
-    const WEBP_IMAGE = 'webp';
+    public const JPG_IMAGE = 'jpg';
+    public const WEBP_IMAGE = 'webp';
 
     private static array $IMAGE_EXTENSIONS = [
         self::JPG_IMAGE,
-        self::WEBP_IMAGE
+        self::WEBP_IMAGE,
     ];
 
     protected static string $baseUrl = "https://picsum.photos/";
@@ -25,8 +25,7 @@ class FakerPicsumImagesProvider extends BaseProvider
         bool $gray = false,
         int $blur = null,
         string $imageExtension = null
-    ) : string
-    {
+    ): string {
         $url = '';
         if ($id) {
             $url = 'id/' . $id . '/';
@@ -54,8 +53,7 @@ class FakerPicsumImagesProvider extends BaseProvider
         bool $gray = false,
         int $blur = null,
         string $imageExtension = null
-    ) : bool|\RuntimeException|string
-    {
+    ): bool|\RuntimeException|string {
         $url = static::imageUrl($width, $height, $id, $randomize, $gray, $blur, $imageExtension);
 
         return self::fetchImage($url, $dir, $fullPath, $imageExtension ?? self::JPG_IMAGE);
@@ -66,11 +64,10 @@ class FakerPicsumImagesProvider extends BaseProvider
         ?string $dir,
         bool $isFullPath,
         string $imageExtension
-    ) : bool|\RuntimeException|string
-    {
+    ): bool|\RuntimeException|string {
         $dir = $dir === null ? sys_get_temp_dir() : $dir; // GNU/Linux / OS X / Windows compatible
         // Validate directory path
-        if (!is_dir($dir) || !is_writable($dir)) {
+        if (! is_dir($dir) || ! is_writable($dir)) {
             throw new \InvalidArgumentException(sprintf('Cannot write to directory "%s"', $dir));
         }
 
@@ -91,7 +88,7 @@ class FakerPicsumImagesProvider extends BaseProvider
             fclose($fp);
             curl_close($ch);
 
-            if (!$success) {
+            if (! $success) {
                 unlink($filepath);
 
                 // could not contact the distant URL or HTTP error - fail silently.
@@ -100,7 +97,7 @@ class FakerPicsumImagesProvider extends BaseProvider
         } elseif (ini_get('allow_url_fopen')) {
             // use remote fopen() via copy()
             $success = copy($url, $filepath);
-            if(!$success) {
+            if (! $success) {
                 // could not contact the distant URL or HTTP error - fail silently.
                 return false;
             }
@@ -111,7 +108,7 @@ class FakerPicsumImagesProvider extends BaseProvider
         return $isFullPath ? $filepath : $filename;
     }
 
-    private static function buildQueryString(?bool $gray, ?int $blur, ?bool $randomize) : string
+    private static function buildQueryString(?bool $gray, ?int $blur, ?bool $randomize): string
     {
         $queryParams = [];
         $queryString = '';
@@ -128,7 +125,7 @@ class FakerPicsumImagesProvider extends BaseProvider
             $queryParams['random'] = static::randomNumber(5, true);
         }
 
-        if (!empty($queryParams)) {
+        if (! empty($queryParams)) {
             $queryString = '?' . http_build_query($queryParams);
         }
 
@@ -138,7 +135,7 @@ class FakerPicsumImagesProvider extends BaseProvider
     private static function buildPicsumUrl($path, $queryString, $imageExtension = null)
     {
         if ($imageExtension) {
-            if (!in_array($imageExtension, self::$IMAGE_EXTENSIONS, true)) {
+            if (! in_array($imageExtension, self::$IMAGE_EXTENSIONS, true)) {
                 throw new InvalidArgumentException(sprintf('Invalid image extension "%s"', $imageExtension));
             }
             $path .= '.' . $imageExtension;
