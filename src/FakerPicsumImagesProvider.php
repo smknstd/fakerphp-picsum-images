@@ -79,11 +79,13 @@ class FakerPicsumImagesProvider extends BaseProvider
 
         // save file
         if (function_exists('curl_exec')) {
+             $user_agent = ini_get('user_agent') ? ini_get('user_agent') : 'Mozilla/5.0 (X11; Linux x86_64; rv:104.0) Gecko/20100101 Firefox/104.0"'
             // use cURL
             $fp = fopen($filepath, 'w');
             $ch = curl_init($url);
             curl_setopt($ch, CURLOPT_FILE, $fp);
             curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+            curl_setopt($ch, CURLOPT_USERAGENT, $user_agent);
             $success = curl_exec($ch) && curl_getinfo($ch, CURLINFO_HTTP_CODE) === 200;
             fclose($fp);
             curl_close($ch);
