@@ -11,6 +11,10 @@ Alternative image provider for [fakerphp](https://github.com/fakerphp/faker) usi
 
 _This package has been forked from [mmo/faker-images](https://github.com/morawskim/faker-images) for [fzaninotto/faker](https://github.com/fzaninotto/Faker) (deprecated [~ Oct 2020](https://marmelab.com/blog/2020/10/21/sunsetting-faker.html))._
  
+## Ressources
+
+- [Tutorial for laravel](https://smknstd.medium.com/fake-beautiful-images-in-laravel-51062967d1db)
+ 
 ## Installation
 
 You can install the package via composer in dev dependency section:
