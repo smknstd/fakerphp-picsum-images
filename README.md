@@ -1,8 +1,7 @@
 # Fakerphp Picsum Images
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/smknstd/fakerphp-picsum-images.svg?style=flat-square)](https://packagist.org/packages/smknstd/fakerphp-picsum-images)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/smknstd/fakerphp-picsum-images/Tests?label=tests)](https://github.com/smknstd/fakerphp-picsum-images/actions?query=workflow%3ATests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/smknstd/fakerphp-picsum-images/Check%20&%20fix%20styling?label=code%20style)](https://github.com/smknstd/fakerphp-picsum-images/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
+[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/smknstd/fakerphp-picsum-images/test.yml?branch=main)
 [![Total Downloads](https://img.shields.io/packagist/dt/smknstd/fakerphp-picsum-images.svg?style=flat-square)](https://packagist.org/packages/smknstd/fakerphp-picsum-images)
 
 ## Introduction
