@@ -27,6 +27,11 @@ class FakerPicsumImagesProviderTest extends TestCase
         $this->assertMatchesRegularExpression('#^https://picsum\.photos/800/400\?grayscale=#', FakerPicsumImagesProvider::imageUrl(800, 400, null, false, true));
     }
 
+    public function testImageUrlSeed()
+    {
+        $this->assertMatchesRegularExpression('#^https://picsum\.photos/seed/1234567/800/400#', FakerPicsumImagesProvider::imageUrl(800, 400, null, false, seed: '1234567'));
+    }
+
     public function testImageUrlWithIdAndCustomWidthAndHeight()
     {
         $this->assertMatchesRegularExpression('#^https://picsum.photos/id/871/800/400#', FakerPicsumImagesProvider::imageUrl(800, 400, 871));

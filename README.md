@@ -31,6 +31,9 @@ $faker->addProvider(new \Smknstd\FakerPicsumImages\FakerPicsumImagesProvider($fa
 // return a string that contains a url like 'https://picsum.photos/800/600/'
 $faker->imageUrl(width: 800, height: 600); 
 
+// return a string that contains a url which returns the same random image based on the provided seed
+$filePath= $faker->image(width: 800, height: 800, seed: 'useremail@example.com');
+
 // download a properly sized image from picsum into a file with a file path like '/tmp/13b73edae8443990be1aa8f1a483bc27.jpg'
 $filePath= $faker->image(dir: '/tmp', width: 640, height: 480);
 ```
@@ -38,6 +41,7 @@ $filePath= $faker->image(dir: '/tmp', width: 640, height: 480);
 Also, there are some more options :
 - alternative webp format
 - effects (grayscale, blurry)
+- seeding ensures you can get the same photo each time by providing a seed string
 - returning a specific photo based on an id instead of a random one (ex: https://picsum.photos/id/1/800/600)
 
 ## Testing

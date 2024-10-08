@@ -24,11 +24,15 @@ class FakerPicsumImagesProvider extends BaseProvider
         bool $randomize = true,
         bool $gray = false,
         int $blur = null,
-        string $imageExtension = null
+        string $imageExtension = null,
+        string $seed = null
     ): string {
         $url = '';
         if ($id) {
             $url = 'id/' . $id . '/';
+        }
+        if ($seed) {
+            $url .= 'seed/' . $seed . '/';
         }
         $url .= "{$width}/{$height}";
         $queryString = self::buildQueryString($gray, $blur, $randomize);
@@ -52,9 +56,10 @@ class FakerPicsumImagesProvider extends BaseProvider
         bool $randomize = true,
         bool $gray = false,
         int $blur = null,
-        string $imageExtension = null
+        string $imageExtension = null,
+        string $seed = null
     ): bool|\RuntimeException|string {
-        $url = static::imageUrl($width, $height, $id, $randomize, $gray, $blur, $imageExtension);
+        $url = static::imageUrl($width, $height, $id, $randomize, $gray, $blur, $imageExtension, $seed);
 
         return self::fetchImage($url, $dir, $isFullPath, $imageExtension ?? self::JPG_IMAGE);
     }
