@@ -20,12 +20,12 @@ class FakerPicsumImagesProvider extends BaseProvider
     public static function imageUrl(
         int $width = 640,
         int $height = 480,
-        int $id = null,
+        ?int $id = null,
         bool $randomize = true,
         bool $gray = false,
-        int $blur = null,
-        string $imageExtension = null,
-        string $seed = null
+        ?int $blur = null,
+        ?string $imageExtension = null,
+        ?string $seed = null
     ): string {
         $url = '';
         if ($id) {
@@ -48,16 +48,16 @@ class FakerPicsumImagesProvider extends BaseProvider
      * @example '/path/to/dir/13b73edae8443990be1aa8f1a483bc27.jpg'
      */
     public static function image(
-        string $dir = null,
+        ?string $dir = null,
         int $width = 640,
         int $height = 480,
         bool $isFullPath = true,
-        int $id = null,
+        ?int $id = null,
         bool $randomize = true,
         bool $gray = false,
-        int $blur = null,
-        string $imageExtension = null,
-        string $seed = null
+        ?int $blur = null,
+        ?string $imageExtension = null,
+        ?string $seed = null
     ): bool|\RuntimeException|string {
         $url = static::imageUrl($width, $height, $id, $randomize, $gray, $blur, $imageExtension, $seed);
 
