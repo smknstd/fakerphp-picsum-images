@@ -10,12 +10,12 @@ class FakerPicsumImagesProvider extends BaseProvider
     public const JPG_IMAGE = 'jpg';
     public const WEBP_IMAGE = 'webp';
 
-    private static array $IMAGE_EXTENSIONS = [
+    private static $IMAGE_EXTENSIONS = [
         self::JPG_IMAGE,
         self::WEBP_IMAGE,
     ];
 
-    protected static string $baseUrl = "https://picsum.photos/";
+    protected static $baseUrl = "https://picsum.photos/";
 
     public static function imageUrl(
         int $width = 640,
@@ -58,7 +58,7 @@ class FakerPicsumImagesProvider extends BaseProvider
         ?int $blur = null,
         ?string $imageExtension = null,
         ?string $seed = null
-    ): bool|\RuntimeException|string {
+    ) {
         $url = static::imageUrl($width, $height, $id, $randomize, $gray, $blur, $imageExtension, $seed);
 
         return self::fetchImage($url, $dir, $isFullPath, $imageExtension ?? self::JPG_IMAGE);
@@ -69,7 +69,7 @@ class FakerPicsumImagesProvider extends BaseProvider
         ?string $dir,
         bool $isFullPath,
         string $imageExtension
-    ): bool|\RuntimeException|string {
+    ) {
         $dir = $dir === null ? sys_get_temp_dir() : $dir; // GNU/Linux / OS X / Windows compatible
         // Validate directory path
         if (! is_dir($dir) || ! is_writable($dir)) {
